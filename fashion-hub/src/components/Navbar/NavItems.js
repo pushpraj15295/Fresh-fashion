@@ -1,28 +1,19 @@
 "use client";
 
-import { adminNavOptions, navOptions } from "@/utils";
+import { adminNavOptions, navOptions, styles } from "@/utils";
 
 const NavItems = ({ isAdminView }) => {
   return (
-    <div
-      className="items-center justify-between w-full md:flex md:w-auto"
-      id="nav-items"
-    >
-      <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-white">
+    <div className={styles.navItem} id="nav-items">
+      <ul className={styles.navItem_ul}>
         {isAdminView
           ? adminNavOptions?.map((item) => (
-              <li
-                className="cursor-pointer block py-2 pl-3 pr-4 text-gray-900 rounded md:p-0"
-                key={item?.id}
-              >
+              <li className={styles.navItem_li} key={item?.id}>
                 {item.label}
               </li>
             ))
           : navOptions?.map((item) => (
-              <li
-                className="cursor-pointer block py-2 pl-3 pr-4 text-gray-900 rounded md:p-0"
-                key={item?.id}
-              >
+              <li className={styles.navItem_li} key={item?.id}>
                 {item.label}
               </li>
             ))}
