@@ -1,6 +1,6 @@
 "use client";
 
-import { adminNavOptions, navOptions, styles } from "@/utils";
+import { adminNavOptions, navOptions } from "@/utils";
 
 const NavItems = ({ isAdminView, isModalView = false }) => {
   return (
@@ -17,12 +17,12 @@ const NavItems = ({ isAdminView, isModalView = false }) => {
       >
         {isAdminView
           ? adminNavOptions?.map((item) => (
-              <li className={styles.navItem_li} key={item?.id}>
+              <li className="cursor-pointer block py-2 pl-3 pr-4 text-gray-900 rounded md:p-0" key={item?.id}>
                 {item.label}
               </li>
             ))
           : navOptions?.map((item) => (
-              <li className={styles.navItem_li} key={item?.id}>
+              <li className="cursor-pointer block py-2 pl-3 pr-4 text-gray-900 rounded md:p-0" key={item?.id}>
                 {item.label}
               </li>
             ))}

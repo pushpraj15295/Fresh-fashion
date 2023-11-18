@@ -2,7 +2,6 @@
 
 import { Fragment, useContext } from "react";
 import NavItems from "./NavItems";
-import { styles } from "@/utils";
 import { GlobalContext } from "@/context";
 import CommonModal from "../CommonModal";
 
@@ -15,35 +14,49 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={styles.nav}>
-        <div className={styles.nav_container}>
-          <div className={styles.logo_container}>
-            <span className={styles.logo_span}>Fashion Hub</span>
+      <nav className="bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <div className="flex item-center cursor-pointer">
+            <span className="slef-center text-2xl font-semibold whitespace-nowwrap">
+              Fashion Hub
+            </span>
           </div>
 
-          <div className={styles.category_container}>
+          <div className="flex md:order-2 gap-2">
             {!isAdminView && isAuthUser && (
               <Fragment>
-                <button className={styles.button}>Account</button>
-                <button className={styles.button}>Cart</button>
+                <button className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white">
+                  Account
+                </button>
+                <button className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white">
+                  Cart
+                </button>
               </Fragment>
             )}
             {user?.role === "admin" &&
               (isAdminView ? (
-                <button className={styles.button}>Client View</button>
+                <button className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white">
+                  Client View
+                </button>
               ) : (
-                <button className={styles.button}>Admin View</button>
+                <button className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white">
+                  Admin View
+                </button>
               ))}
             {isAuthUser ? (
-              <button className={styles.button}>Logout</button>
+              <button className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white">
+                Logout
+              </button>
             ) : (
-              <button className={styles.button}>Login</button>
+              <button className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white">
+                Login
+              </button>
             )}
 
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
-              className={styles.menu_button}
+              className="inline-flex items-center p-2 text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               aria-controls="navbar-sticky"
               aria-expanded="false"
               onClick={() => setShowNavModal(!showNavModal)}
