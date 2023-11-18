@@ -47,8 +47,6 @@ export const styles = {
     logo_span:"slef-center text-2xl font-semibold whitespace-nowwrap",
     category_container:"flex md:order-2 gap-2",
     menu_button:"inline-flex items-center p-2 text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600",
-    navItem:"items-center justify-between w-full md:flex md:w-auto",
-    navItem_ul:"flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-white",
     navItem_li:"cursor-pointer block py-2 pl-3 pr-4 text-gray-900 rounded md:p-0",
    
 }
