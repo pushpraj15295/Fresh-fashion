@@ -1,6 +1,6 @@
 "use client";
 
-import { adminNavOptions, navOptions, styles } from "@/utils";
+import { adminNavOptions, navOptions ,styles} from "@/utils";
 
 const NavItems = ({ isAdminView }) => {
   return (

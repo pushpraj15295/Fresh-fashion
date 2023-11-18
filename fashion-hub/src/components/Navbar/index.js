@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import NavItems from "./NavItems";
 import { styles } from "@/utils";
 
-const isAdminView = false;
+const isAdminView = true;
 const isAuthUser = false;
 const user = { role: "admin" };
 
@@ -23,7 +23,7 @@ const Navbar = () => {
               <button className={styles.button}>Cart</button>
             </Fragment>
           )}
-          {user?.roll === "admin" &&
+          {user?.role === "admin" &&
             (isAdminView ? (
               <button className={styles.button}>Client View</button>
             ) : (
