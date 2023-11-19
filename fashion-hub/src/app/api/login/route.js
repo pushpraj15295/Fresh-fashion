@@ -33,41 +33,41 @@ export async function POST(req) {
         success: false,
         message: "Account not found with this email",
       });
-    } else {
-      const checkPassword = await compare(password, checkUser.password);
-      if (!checkPassword) {
-        return NextResponse.json({
-          success: false,
-          message: "Incorrect password, please try again !",
-        });
-      } else {
-        const token = jwt.sigh(
-          {
-            id: checkUser?._id,
-            email: checkUser?.email,
-            role: checkUser?.role,
-          },
-          "default_secret_key",
-          { expiresIn: "id" }
-        );
-
-        const finalData = {
-          token,
-          user: {
-            email: checkUser.email,
-            name: checkUser.name,
-            _id: checkUser._id,
-            role: checkUser.role,
-          },
-        };
-
-        return NextResponse.json({
-          success: true,
-          message: "Login successfull!",
-          finalData, //main user data after login
-        });
-      }
     }
+
+    const checkPassword = await compare(password, checkUser.password);
+    if (!checkPassword) {
+      return NextResponse.json({
+        success: false,
+        message: "Incorrect password, please try again !",
+      });
+    }
+    const token = jwt.sign(
+      {
+        id: checkUser._id,
+        email: checkUser?.email,
+        role: checkUser?.role,
+      },
+      "default_secret_key",
+      { expiresIn: "1d" }
+    );
+
+    const finalData = {
+      token,
+      user: {
+        email: checkUser.email,
+        name: checkUser.name,
+        _id: checkUser._id,
+        role: checkUser.role,
+      },
+    };
+
+    return NextResponse.json({
+      success: true,
+      message: "Login successfull!",
+      finalData, //main user data after login
+    });
+
   } catch (err) {
     console.log("Error while logging In. Please try again");
     return NextResponse.json({
