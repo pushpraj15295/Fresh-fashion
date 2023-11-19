@@ -4,20 +4,39 @@ import { Fragment, useContext } from "react";
 import NavItems from "./NavItems";
 import { GlobalContext } from "@/context";
 import CommonModal from "../CommonModal";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const isAdminView = false;
-const isAuthUser = true;
-const user = { role: "admin" };
 
 const Navbar = () => {
-  const { showNavModal, setShowNavModal } = useContext(GlobalContext);
+  const {
+    user,
+    isAuthUser,
+    setIsAuthUser,
+    setUser,
+    showNavModal,
+    setShowNavModal,
+  } = useContext(GlobalContext);
+  const router = useRouter();
+
+  const handleLogout = () => {
+    setIsAuthUser(false);
+    setUser(null);
+    Cookies.remove("token");
+    localStorage.clear();
+    router.push("/");
+  };
 
   return (
     <>
       <nav className="bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <div className="flex item-center cursor-pointer">
-            <span className="slef-center text-2xl font-semibold whitespace-nowwrap">
+            <span
+              className="slef-center text-2xl font-semibold whitespace-nowwrap"
+              onClick={() => router.push("/")}
+            >
               Fashion Hub
             </span>
           </div>
@@ -44,11 +63,17 @@ const Navbar = () => {
                 </button>
               ))}
             {isAuthUser ? (
-              <button className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white">
+              <button
+                className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
+                onClick={handleLogout}
+              >
                 Logout
               </button>
             ) : (
-              <button className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white">
+              <button
+                className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
+                onClick={() => router.push("/login")}
+              >
                 Login
               </button>
             )}

@@ -49,7 +49,7 @@ const Login = () => {
       router.push("/");
     }
   }, [isAuthUser]);
-  console.log(isAuthUser, user);
+ 
 
   return (
     <div className="bg-white relative">
