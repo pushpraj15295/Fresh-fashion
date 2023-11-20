@@ -1,12 +1,15 @@
 "use client";
 
 import InputComponent from "@/components/FormElements/InputComponent";
+import ComponentLevelLoader from "@/components/Loader/componentlevel";
+import Notification from "@/components/Notification";
 import { GlobalContext } from "@/context";
 import { login } from "@/services/login";
 import { loginFormControls } from "@/utils";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const initialFormData = {
   email: "",
@@ -16,8 +19,14 @@ const initialFormData = {
 const Login = () => {
   const router = useRouter();
   const [formData, setFormData] = useState(initialFormData);
-  const { user, setUser, isAuthUser, setIsAuthUser } =
-    useContext(GlobalContext);
+  const {
+    user,
+    setUser,
+    isAuthUser,
+    setIsAuthUser,
+    componentLevelLoader,
+    setComponentLevelLoader,
+  } = useContext(GlobalContext);
 
   function isFormValid() {
     return formData &&
@@ -30,17 +39,26 @@ const Login = () => {
   }
 
   async function handleLogin() {
+    setComponentLevelLoader({ loading: true, id: "" });
     const res = await login(formData);
     console.log(res);
 
     if (res.success) {
+      toast.success(res.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       setIsAuthUser(true);
       setUser(res?.finalData?.user);
       setFormData(initialFormData);
       Cookies.set("token", res?.finalData?.token);
       localStorage.setItem("user", JSON.stringify(res?.finalData?.user));
+      setComponentLevelLoader({ loading: false, id: "" });
     } else {
+      toast.error(res.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       setIsAuthUser(false);
+      setComponentLevelLoader({ loading: false, id: "" });
     }
   }
 
@@ -49,7 +67,6 @@ const Login = () => {
       router.push("/");
     }
   }, [isAuthUser]);
- 
 
   return (
     <div className="bg-white relative">
@@ -84,11 +101,21 @@ const Login = () => {
                   disabled={!isFormValid()}
                   onClick={handleLogin}
                 >
-                  Login
+                  {componentLevelLoader && componentLevelLoader?.loading ? (
+                    <ComponentLevelLoader
+                      text={"Logging In"}
+                      color={"#ffffff"}
+                      loading={
+                        componentLevelLoader && componentLevelLoader?.loading
+                      }
+                    />
+                  ) : (
+                    "Login"
+                  )}
                 </button>
 
                 <div className="flex flex-col gap-2">
-                  <p>New to website ?</p>
+                  <u>New to website ?</u>
                   <button
                     className="inline-flex w-full items-center justify-center bg-black px-6 py-3 text-lg text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide"
                     onClick={() => router.push("/register")}
@@ -101,6 +128,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Notification />
     </div>
   );
 };
