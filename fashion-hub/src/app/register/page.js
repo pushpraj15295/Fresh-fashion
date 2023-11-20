@@ -43,14 +43,14 @@ const Register = () => {
 
     if (data.success) {
       toast.success(data.message, {
-        position: toast.POSITION.TOP_RIGHT,
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
       setIsRegistered(true);
       setPageLevelLoader(false);
       setFormData(initialFormData);
     } else {
       toast.error(data.message, {
-        position: toast.POSITION.TOP_RIGHT,
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
       setPageLevelLoader(false);
       setFormData(initialFormData);

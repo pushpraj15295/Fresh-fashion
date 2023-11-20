@@ -12,7 +12,7 @@ const SelectComponent = ({ label, value, onChange, options = [] }) => {
       >
         {options && options.length ? (
           options?.map((optionItem) => (
-            <option id={optionItem.id} value={optionItem.value} key={optionItem.id}>
+            <option id={optionItem.id} value={optionItem.id} key={optionItem.id}>
               {optionItem.label}
             </option>
           ))

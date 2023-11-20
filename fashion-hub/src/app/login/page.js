@@ -45,7 +45,7 @@ const Login = () => {
 
     if (res.success) {
       toast.success(res.message, {
-        position: toast.POSITION.TOP_RIGHT,
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
       setIsAuthUser(true);
       setUser(res?.finalData?.user);
@@ -55,7 +55,7 @@ const Login = () => {
       setComponentLevelLoader({ loading: false, id: "" });
     } else {
       toast.error(res.message, {
-        position: toast.POSITION.TOP_RIGHT,
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
       setIsAuthUser(false);
       setComponentLevelLoader({ loading: false, id: "" });
