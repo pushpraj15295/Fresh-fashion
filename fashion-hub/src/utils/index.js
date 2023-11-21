@@ -155,7 +155,7 @@ export const adminAddNewProductformControls = [
       {
         id: "no",
         label: "No",
-      }
+      },
     ],
   },
   {
@@ -193,3 +193,15 @@ export const AvailableSize = [
     label: "XXL",
   },
 ];
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyAZM8jygjRQscfuMyJ6ru2IQuSj8jFcse4",
+  authDomain: "next-js-fashion-hub.firebaseapp.com",
+  projectId: "next-js-fashion-hub",
+  storageBucket: "next-js-fashion-hub.appspot.com",
+  messagingSenderId: "1021269348566",
+  appId: "1:1021269348566:web:55cd9b74658aa6b7bd3977",
+  measurementId: "G-G0VFJ19978",
+};
+
+export const firebaseStorageURL = "gs://next-js-fashion-hub.appspot.com";
