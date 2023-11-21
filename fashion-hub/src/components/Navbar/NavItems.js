@@ -5,7 +5,7 @@ import { adminNavOptions, navOptions } from "@/utils";
 const NavItems = ({ isAdminView, isModalView = false }) => {
   return (
     <div
-      className={`items-center justify-between w-full md:flex md:w-auto ${
+      className={`items-center justify-between w-full md:flex md:w-auto pt-3 ${
         !isModalView && "hidden"
       }`}
       id="nav-items"
