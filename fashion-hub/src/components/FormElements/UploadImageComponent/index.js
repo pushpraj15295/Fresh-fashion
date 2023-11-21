@@ -1,7 +1,9 @@
 import "../../../styles/add-product/addProduct.css";
 import { CiEdit } from "react-icons/ci";
 import { IoCamera } from "react-icons/io5";
+import { MdDeleteForever } from "react-icons/md";
 import { useRef, useState } from "react";
+import { IoCloudUpload } from "react-icons/io5";
 
 const UploadImageComponent = () => {
   const [image, setImage] = useState("");
@@ -50,10 +52,12 @@ const UploadImageComponent = () => {
         <p>
           {image ? (
             <button className="removeImageButton" onClick={handleRemoveImage}>
-              Remove Image
+              Remove Image &nbsp; <MdDeleteForever size="20" />
             </button>
           ) : (
-            <button className="uploadImageButton"> Upload Image </button>
+            <button className="uploadImageButton">
+              Upload Image &nbsp; <IoCloudUpload size="20" />
+            </button>
           )}
         </p>
       </div>

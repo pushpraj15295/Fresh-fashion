@@ -1,9 +1,9 @@
-.UploadContainer{
-    display: flex;
-    align-items: center;
-    gap:40px;
-    font-size: 18px;
-    font-weight: 400;
+.UploadContainer {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  font-size: 18px;
+  font-weight: 400;
 }
 .uploadImageMainContainer {
   border: 3px solid gray;
@@ -39,16 +39,23 @@
   display: flex;
 }
 
-.removeImageButton{
-    border:1px solid gray;
-    padding: 4px 12px;
-    border-radius: 10px;
-    background-color: rgb(77, 76, 76);
-    color:white;
+.removeImageButton {
+  border: 1px solid gray;
+  padding: 4px 12px;
+  border-radius: 10px;
+  background-color: rgb(139 139 139);
+  color: white;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.uploadImageButton{
-    font-size: 22px;
-    font-weight: 500;
-    color:rgb(77, 76, 76);
+.uploadImageButton {
+  font-size: 22px;
+  font-weight: 500;
+  color: rgb(77, 76, 76);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
