@@ -1,10 +1,11 @@
 import "../../../styles/add-product/addProduct.css";
 import { CiEdit } from "react-icons/ci";
 import { IoCamera } from "react-icons/io5";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const UploadImageComponent = () => {
   const [image, setImage] = useState("");
+  const inputRef = useRef(null);
 
   const handleImageUpload = (e) => {
     setImage(URL.createObjectURL(e.target.files[0]));
@@ -12,12 +13,16 @@ const UploadImageComponent = () => {
 
   const handleRemoveImage = () => {
     setImage("");
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
   };
 
   return (
     <div className="UploadContainer">
       <div className="uploadImageMainContainer">
         <input
+          ref={inputRef}
           type="file"
           className="uploadImageInput"
           onChange={handleImageUpload}

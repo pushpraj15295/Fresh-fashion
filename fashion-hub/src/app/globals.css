@@ -26,6 +26,8 @@ body {
     rgb(var(--background-start-rgb));
   min-height: 100vh;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body::-webkit-scrollbar {
