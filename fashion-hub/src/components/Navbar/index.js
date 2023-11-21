@@ -5,9 +5,7 @@ import NavItems from "./NavItems";
 import { GlobalContext } from "@/context";
 import CommonModal from "../CommonModal";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
-
-const isAdminView = false;
+import { usePathname, useRouter } from "next/navigation";
 
 const Navbar = () => {
   const {
@@ -19,6 +17,8 @@ const Navbar = () => {
     setShowNavModal,
   } = useContext(GlobalContext);
   const router = useRouter();
+  //save route in pathname
+  const pathName = usePathname();
 
   const handleLogout = () => {
     setIsAuthUser(false);
@@ -27,6 +27,8 @@ const Navbar = () => {
     localStorage.clear();
     router.push("/");
   };
+
+  const isAdminView = pathName.includes("admin-view");
 
   return (
     <>
@@ -54,11 +56,17 @@ const Navbar = () => {
             )}
             {user?.role === "admin" &&
               (isAdminView ? (
-                <button className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white rounded-sm">
+                <button
+                  className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white rounded-sm"
+                  onClick={() => router.push("/")}
+                >
                   Client View
                 </button>
               ) : (
-                <button className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white rounded-sm">
+                <button
+                  className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white rounded-sm"
+                  onClick={() => router.push("/admin-view")}
+                >
                   Admin View
                 </button>
               ))}
@@ -102,13 +110,13 @@ const Navbar = () => {
               </svg>
             </button>
           </div>
-          <NavItems isAdminView={isAdminView} />
+          <NavItems isAdminView={isAdminView} router={router}/>
         </div>
       </nav>
 
       <CommonModal
         showModelTitle={false}
-        mainContent={<NavItems isModalView={true} isAdminView={isAdminView} />}
+        mainContent={<NavItems isModalView={true} isAdminView={isAdminView} router={router} />}
         show={showNavModal}
         setShow={setShowNavModal}
       />
