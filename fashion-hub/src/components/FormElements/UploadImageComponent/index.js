@@ -2,19 +2,14 @@ import "../../../styles/add-product/addProduct.css";
 import { CiEdit } from "react-icons/ci";
 import { IoCamera } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
-import { useRef } from "react";
 import { IoCloudUpload } from "react-icons/io5";
 
-const UploadImageComponent = ({ handleImage, setImage, image }) => {
-  const inputRef = useRef(null);
-
-  const handleRemoveImage = () => {
-    setImage("");
-    if (inputRef.current) {
-      inputRef.current.value = "";
-    }
-  };
-
+const UploadImageComponent = ({
+  handleImage,
+  image,
+  handleRemoveImage,
+  inputRef,
+}) => {
   return (
     <div className="UploadContainer">
       <div className="uploadImageMainContainer">

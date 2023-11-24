@@ -4,6 +4,9 @@ import InputComponent from "@/components/FormElements/InputComponent";
 import SelectComponent from "@/components/FormElements/SelectComponent";
 import TileComponent from "@/components/FormElements/TileComponent";
 import UploadImageComponent from "@/components/FormElements/UploadImageComponent";
+import ComponentLevelLoader from "@/components/Loader/componentlevel";
+import Notification from "@/components/Notification";
+import { GlobalContext } from "@/context";
 import { addNewProduct } from "@/services/product";
 import {
   adminAddNewProductformControls,
@@ -18,8 +21,8 @@ import {
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
-import { useState } from "react";
-import { resolve } from "styled-jsx/css";
+import { useContext, useRef, useState } from "react";
+import { toast } from "react-toastify";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app, firebaseStorageURL);
@@ -68,12 +71,15 @@ const initialFormData = {
 const AdminAddNewProduct = () => {
   const [image, setImage] = useState("");
   const [formData, setFormData] = useState(initialFormData);
+  const { componentLevelLoader, setComponentLevelLoader } =
+    useContext(GlobalContext);
+
+  const inputRef = useRef(null);
+
   async function handleImage(event) {
     const extractImageUrl = await helperForUPloadingImageToFirebase(
       event.target.files[0]
     );
-
-    console.log(extractImageUrl);
     setImage(URL.createObjectURL(event.target.files[0]));
 
     if (extractImageUrl !== "") {
@@ -83,6 +89,13 @@ const AdminAddNewProduct = () => {
       });
     }
   }
+
+  const handleRemoveImage = () => {
+    setImage("");
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
+  };
 
   const handleTileClick = (getCurrentItem) => {
     let copySizes = [...formData.sizes];
@@ -98,10 +111,24 @@ const AdminAddNewProduct = () => {
     });
   };
 
-  
-  async function handleAddProduct(){
-     const res = await addNewProduct(formData)
-     console.log("addProduct",res)
+  async function handleAddProduct(event) {
+    setComponentLevelLoader({ loading: true, id: "" });
+    const res = await addNewProduct(formData);
+    console.log("addProduct", res);
+
+    if (res.success) {
+      setComponentLevelLoader({ loading: false, id: "" });
+      toast.success(res.message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      setFormData(initialFormData);
+      handleRemoveImage();
+    } else {
+      setComponentLevelLoader({ loading: false, id: "" });
+      toast.error(res.message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+    }
   }
 
   return (
@@ -110,8 +137,9 @@ const AdminAddNewProduct = () => {
         <div className="w-full mt-6 mr-0 ml-0 mb-0 space-y-8">
           <UploadImageComponent
             handleImage={handleImage}
-            setImage={setImage}
             image={image}
+            handleRemoveImage={handleRemoveImage}
+            inputRef={inputRef}
           />
 
           <div className="flex gap-2 flex-col">
@@ -151,13 +179,23 @@ const AdminAddNewProduct = () => {
               />
             ) : null
           )}
-          <button className="disabled:opacity-50 rounded-sm inline-flex w-full items-center justify-center bg-black px-6 py-3 text-lg text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide"
+          <button
+            className="disabled:opacity-50 rounded-sm inline-flex w-full items-center justify-center bg-black px-6 py-3 text-lg text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide"
             onClick={handleAddProduct}
           >
-            Add Product
+            {componentLevelLoader && componentLevelLoader.loading ? (
+              <ComponentLevelLoader
+                text={"Adding Product"}
+                color={"#ffffff"}
+                loading={componentLevelLoader && componentLevelLoader?.loading}
+              />
+            ) : (
+              "Add Product"
+            )}
           </button>
         </div>
       </div>
+      <Notification />
     </div>
   );
 };
