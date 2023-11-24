@@ -4,6 +4,7 @@ import InputComponent from "@/components/FormElements/InputComponent";
 import SelectComponent from "@/components/FormElements/SelectComponent";
 import TileComponent from "@/components/FormElements/TileComponent";
 import UploadImageComponent from "@/components/FormElements/UploadImageComponent";
+import { addNewProduct } from "@/services/product";
 import {
   adminAddNewProductformControls,
   AvailableSize,
@@ -97,7 +98,11 @@ const AdminAddNewProduct = () => {
     });
   };
 
-  console.log("add-product", formData);
+  
+  async function handleAddProduct(){
+     const res = await addNewProduct(formData)
+     console.log("addProduct",res)
+  }
 
   return (
     <div className="w-full mt-5 mr-0 ml-0 mb-0 relative">
@@ -146,7 +151,9 @@ const AdminAddNewProduct = () => {
               />
             ) : null
           )}
-          <button className="disabled:opacity-50 rounded-sm inline-flex w-full items-center justify-center bg-black px-6 py-3 text-lg text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide">
+          <button className="disabled:opacity-50 rounded-sm inline-flex w-full items-center justify-center bg-black px-6 py-3 text-lg text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide"
+            onClick={handleAddProduct}
+          >
             Add Product
           </button>
         </div>

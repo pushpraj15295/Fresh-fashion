@@ -13,7 +13,7 @@ export const addNewProduct = async (FormData) => {
       body: JSON.stringify(FormData),
     });
 
-    finalData = await responce.json();
+    const finalData = await responce.json();
     return finalData;
      
   } catch (err) {
