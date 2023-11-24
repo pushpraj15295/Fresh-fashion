@@ -21,6 +21,7 @@ import {
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
+import { useRouter } from "next/navigation";
 import { useContext, useRef, useState } from "react";
 import { toast } from "react-toastify";
 // Initialize Firebase
@@ -73,7 +74,7 @@ const AdminAddNewProduct = () => {
   const [formData, setFormData] = useState(initialFormData);
   const { componentLevelLoader, setComponentLevelLoader } =
     useContext(GlobalContext);
-
+  const router = useRouter();
   const inputRef = useRef(null);
 
   async function handleImage(event) {
@@ -123,6 +124,10 @@ const AdminAddNewProduct = () => {
       });
       setFormData(initialFormData);
       handleRemoveImage();
+      //route
+      setTimeout(() => {
+        router.push("/admin-view/all-products");
+      }, 1000);
     } else {
       setComponentLevelLoader({ loading: false, id: "" });
       toast.error(res.message, {
