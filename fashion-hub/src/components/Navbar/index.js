@@ -110,13 +110,19 @@ const Navbar = () => {
               </svg>
             </button>
           </div>
-          <NavItems isAdminView={isAdminView} router={router}/>
+          <NavItems isAdminView={isAdminView} router={router} />
         </div>
       </nav>
 
       <CommonModal
         showModelTitle={false}
-        mainContent={<NavItems isModalView={true} isAdminView={isAdminView} router={router} />}
+        mainContent={
+          <NavItems
+            isModalView={true}
+            isAdminView={isAdminView}
+            router={router}
+          />
+        }
         show={showNavModal}
         setShow={setShowNavModal}
       />
