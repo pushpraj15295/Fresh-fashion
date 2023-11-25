@@ -7,26 +7,28 @@ import UploadImageComponent from "@/components/FormElements/UploadImageComponent
 import ComponentLevelLoader from "@/components/Loader/componentlevel";
 import Notification from "@/components/Notification";
 import { GlobalContext } from "@/context";
-import { addNewProduct } from "@/services/product";
+import { addNewProduct, updateAProduct } from "@/services/product";
 import {
-  adminAddNewProductformControls,
   AvailableSize,
   firebaseConfig,
   firebaseStorageURL,
+  adminAddNewProductformControls,
 } from "@/utils";
 import { initializeApp } from "firebase/app";
 import {
-  getDownloadURL,
-  getStorage,
   ref,
+  getStorage,
+  getDownloadURL,
   uploadBytesResumable,
 } from "firebase/storage";
-import { useRouter } from "next/navigation";
-import { useContext, useRef, useState } from "react";
 import { toast } from "react-toastify";
+import { resolve } from "styled-jsx/css";
+import { useRouter } from "next/navigation";
+import { useContext, useRef, useState, useEffect } from "react";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app, firebaseStorageURL);
+
 const createUniqueFileName = (getFile) => {
   const timestamps = Date.now();
   const randomStringValue = Math.random().toString(36).substring(2, 12);
@@ -72,11 +74,16 @@ const initialFormData = {
 const AdminAddNewProduct = () => {
   const [image, setImage] = useState("");
   const [formData, setFormData] = useState(initialFormData);
-  const { componentLevelLoader, setComponentLevelLoader } =
-    useContext(GlobalContext);
+  const {
+    componentLevelLoader,
+    setComponentLevelLoader,
+    currentUpdatedProduct,
+    setCurrentUpdatedProduct,
+  } = useContext(GlobalContext);
+
   const router = useRouter();
   const inputRef = useRef(null);
-
+  // image handle
   async function handleImage(event) {
     const extractImageUrl = await helperForUPloadingImageToFirebase(
       event.target.files[0]
@@ -112,10 +119,14 @@ const AdminAddNewProduct = () => {
     });
   };
 
-  async function handleAddProduct(event) {
+  async function handleAddProduct() {
     setComponentLevelLoader({ loading: true, id: "" });
-    const res = await addNewProduct(formData);
-    console.log("addProduct", res);
+    const res =
+      currentUpdatedProduct !== null
+        ? await updateAProduct(formData)
+        : await addNewProduct(formData);
+
+    console.log(res);
 
     if (res.success) {
       setComponentLevelLoader({ loading: false, id: "" });
@@ -124,17 +135,22 @@ const AdminAddNewProduct = () => {
       });
       setFormData(initialFormData);
       handleRemoveImage();
+      setCurrentUpdatedProduct(null);
       //route
       setTimeout(() => {
         router.push("/admin-view/all-products");
       }, 1000);
     } else {
-      setComponentLevelLoader({ loading: false, id: "" });
       toast.error(res.message, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
+      setComponentLevelLoader({ loading: false, id: "" });
     }
   }
+
+  useEffect(() => {
+    if (currentUpdatedProduct !== null) setFormData(currentUpdatedProduct);
+  }, [currentUpdatedProduct]);
 
   return (
     <div className="w-full mt-5 mr-0 ml-0 mb-0 relative">
@@ -148,7 +164,7 @@ const AdminAddNewProduct = () => {
           />
 
           <div className="flex gap-2 flex-col">
-            <label className="text-s font-semibold"> Available sizes </label>
+            <label> Available sizes </label>
             <TileComponent
               selected={formData.sizes}
               onClick={handleTileClick}
@@ -190,10 +206,16 @@ const AdminAddNewProduct = () => {
           >
             {componentLevelLoader && componentLevelLoader.loading ? (
               <ComponentLevelLoader
-                text={"Adding Product"}
+                text={
+                  currentUpdatedProduct !== null
+                    ? "Updating Product"
+                    : "Adding Product"
+                }
                 color={"#ffffff"}
                 loading={componentLevelLoader && componentLevelLoader?.loading}
               />
+            ) : currentUpdatedProduct !== null ? (
+              "Update Product"
             ) : (
               "Add Product"
             )}
