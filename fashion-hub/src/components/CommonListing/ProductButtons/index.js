@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { toast } from "react-toastify";
 
 export default function ProductButton({ item }) {
+  const router = useRouter();
   const pathName = usePathname();
   const {
     setCurrentUpdatedProduct,
@@ -17,7 +18,6 @@ export default function ProductButton({ item }) {
     user,
     showCartModal, setShowCartModal
   } = useContext(GlobalContext);
-  const router = useRouter();
 
   const isAdminView = pathName.includes("admin-view");
 

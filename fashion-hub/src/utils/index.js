@@ -28,14 +28,14 @@ export const navOptions = [
 
 export const adminNavOptions = [
   {
-    id: "adminNewProduct",
-    label: "Add New Product",
-    path: "/admin-view/add-product",
-  },
-  {
     id: "adminListing",
     label: "Manage All Products",
     path: "/admin-view/all-products",
+  },
+  {
+    id: "adminNewProduct",
+    label: "Add New Product",
+    path: "/admin-view/add-product",
   },
 ];
 
@@ -68,8 +68,14 @@ export const registrationFormControls = [
     label: "Role",
     componentType: "select",
     options: [
-      { id: "admin", label: "Admin" },
-      { id: "customer", label: "Customer" },
+      {
+        id: "admin",
+        label: "Admin",
+      },
+      {
+        id: "customer",
+        label: "customer",
+      },
     ],
   },
 ];
@@ -91,7 +97,7 @@ export const loginFormControls = [
   },
 ];
 
-export const adminAddNewProductformControls = [
+export const adminAddProductformControls = [
   {
     id: "name",
     type: "text",
@@ -138,7 +144,7 @@ export const adminAddNewProductformControls = [
     id: "deliveryInfo",
     type: "text",
     placeholder: "Enter deliveryInfo",
-    label: "Delivery Information",
+    label: "Delivery Info",
     componentType: "input",
   },
   {
@@ -193,6 +199,46 @@ export const AvailableSize = [
     label: "XXL",
   },
 ];
+
+export const addNewAddressFormControls = [
+  {
+    id: "fullName",
+    type: "input",
+    placeholder: "Enter your full name",
+    label: "Full Name",
+    componentType: "input",
+  },
+  {
+    id: "address",
+    type: "input",
+    placeholder: "Enter your full address",
+    label: "Address",
+    componentType: "input",
+  },
+  {
+    id: "city",
+    type: "input",
+    placeholder: "Enter your city",
+    label: "City",
+    componentType: "input",
+  },
+  {
+    id: "country",
+    type: "input",
+    placeholder: "Enter your country",
+    label: "Country",
+    componentType: "input",
+  },
+  {
+    id: "postalCode",
+    type: "input",
+    placeholder: "Enter your postal code",
+    label: "Postal Code",
+    componentType: "input",
+  },
+];
+
+//firebase
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAZM8jygjRQscfuMyJ6ru2IQuSj8jFcse4",
