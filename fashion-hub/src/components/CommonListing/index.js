@@ -1,8 +1,9 @@
-"use client"
-import { useEffect } from "react";
+"use client";
+
 import { useRouter } from "next/navigation";
 import ProductButton from "./ProductButtons";
 import ProductTile from "./ProductTile";
+import { useEffect } from "react";
 import Notification from "../Notification";
 
 export default function CommonListing({ data }) {
@@ -29,7 +30,7 @@ export default function CommonListing({ data }) {
             : null}
         </div>
       </div>
-      <Notification/>
+      <Notification />
     </section>
   );
 }
