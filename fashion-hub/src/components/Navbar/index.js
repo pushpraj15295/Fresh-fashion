@@ -1,21 +1,28 @@
 "use client";
 
-import { Fragment, useContext } from "react";
-import NavItems from "./NavItems";
 import { GlobalContext } from "@/context";
+import { adminNavOptions, navOptions } from "@/utils";
+import { Fragment, useContext, useEffect } from "react";
 import CommonModal from "../CommonModal";
 import Cookies from "js-cookie";
 import { usePathname, useRouter } from "next/navigation";
+import CartModal from "../CartModal";
+import NavItems from "./NavItems";
 
 const Navbar = () => {
   const {
     user,
-    isAuthUser,
-    setIsAuthUser,
     setUser,
+    isAuthUser,
     showNavModal,
+    setIsAuthUser,
+    showCartModal,
     setShowNavModal,
+    setShowCartModal,
+    currentUpdatedProduct,
+    setCurrentUpdatedProduct,
   } = useContext(GlobalContext);
+
   const router = useRouter();
   //save route in pathname
   const pathName = usePathname();
@@ -29,6 +36,14 @@ const Navbar = () => {
   };
 
   const isAdminView = pathName.includes("admin-view");
+
+  useEffect(() => {
+    if (
+      pathName !== "/admin-view/add-product" &&
+      currentUpdatedProduct !== null
+    )
+      setCurrentUpdatedProduct(null);
+  }, [pathName]);
 
   return (
     <>
@@ -46,10 +61,16 @@ const Navbar = () => {
           <div className="flex md:order-2 gap-2">
             {!isAdminView && isAuthUser && (
               <Fragment>
-                <button className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white rounded-sm">
+                <button
+                  className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white rounded-sm"
+                  onClick={() => router.push("/account")}
+                >
                   Account
                 </button>
-                <button className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white rounded-sm">
+                <button
+                  className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white rounded-sm"
+                  onClick={() => setShowCartModal(true)}
+                >
                   Cart
                 </button>
               </Fragment>
@@ -126,6 +147,8 @@ const Navbar = () => {
         show={showNavModal}
         setShow={setShowNavModal}
       />
+
+      {showCartModal && <CartModal />}
     </>
   );
 };

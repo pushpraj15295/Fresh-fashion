@@ -37,9 +37,8 @@ export default function Account() {
     setPageLevelLoader(true);
     const res = await fetchAllAddresses(user?._id);
 
-    if (res.success) {
+    if (res?.success) {
       setPageLevelLoader(false);
-
       setAddresses(res.data);
     }
   }
