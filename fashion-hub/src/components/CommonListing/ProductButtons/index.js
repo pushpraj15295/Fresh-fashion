@@ -29,12 +29,12 @@ export default function ProductButton({ item }) {
 
     if (res.success) {
       setComponentLevelLoader({ loading: false, id: "" });
-      toast.success(res.message, {
+      toast.success(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       router.refresh();
     } else {
-      toast.error(res.message, {
+      toast.error(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setComponentLevelLoader({ loading: false, id: "" });
@@ -47,13 +47,13 @@ export default function ProductButton({ item }) {
     const res = await addToCart({ productID: getItem._id, userID: user._id });
 
     if (res.success) {
-      toast.success(res.message, {
+      toast.success(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setComponentLevelLoader({ loading: false, id: "" });
       setShowCartModal(true);
     } else {
-      toast.error(res.message, {
+      toast.error(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setComponentLevelLoader({ loading: false, id: "" });

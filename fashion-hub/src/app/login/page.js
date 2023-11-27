@@ -48,7 +48,7 @@ export default function Login() {
     console.log(res);
 
     if (res.success) {
-      toast.success(res.message, {
+      toast.success(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setIsAuthUser(true);
@@ -58,7 +58,7 @@ export default function Login() {
       localStorage.setItem("user", JSON.stringify(res?.finalData?.user));
       setComponentLevelLoader({ loading: false, id: "" });
     } else {
-      toast.error(res.message, {
+      toast.error(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setIsAuthUser(false);

@@ -61,13 +61,13 @@ export default function CartModal() {
 
     if (res.success) {
       setComponentLevelLoader({ loading: false, id: "" });
-      toast.success(res.message, {
+      toast.success(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
 
       extractAllCartItems();
     } else {
-      toast.error(res.message, {
+      toast.error(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setComponentLevelLoader({ loading: false, id: getCartItemID });

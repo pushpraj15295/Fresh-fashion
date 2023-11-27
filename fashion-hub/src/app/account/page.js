@@ -55,9 +55,9 @@ export default function Account() {
 
     console.log(res);
 
-    if (res.success) {
+    if (res?.success) {
       setComponentLevelLoader({ loading: false, id: "" });
-      toast.success(res.message, {
+      toast.success(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setAddressFormData({
@@ -71,7 +71,7 @@ export default function Account() {
       setCurrentEditedAddressId(null);
     } else {
       setComponentLevelLoader({ loading: false, id: "" });
-      toast.error(res.message, {
+      toast.error(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setAddressFormData({
@@ -101,17 +101,17 @@ export default function Account() {
 
     const res = await deleteAddress(getCurrentAddressID);
 
-    if (res.success) {
+    if (res?.success) {
       setComponentLevelLoader({ loading: false, id: "" });
 
-      toast.success(res.message, {
+      toast.success(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       extractAllAddresses();
     } else {
       setComponentLevelLoader({ loading: false, id: "" });
 
-      toast.error(res.message, {
+      toast.error(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
     }

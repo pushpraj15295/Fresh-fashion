@@ -37,7 +37,7 @@ export default function Checkout() {
   async function getAllAddresses() {
     const res = await fetchAllAddresses(user?._id);
 
-    if (res.success) {
+    if (res?.success) {
       setAddresses(res.data);
     }
   }
@@ -83,13 +83,13 @@ export default function Checkout() {
         if (res.success) {
           setIsOrderProcessing(false);
           setOrderSuccess(true);
-          toast.success(res.message, {
+          toast.success(res?.message, {
             position: toast.POSITION.TOP_RIGHT,
           });
         } else {
           setIsOrderProcessing(false);
           setOrderSuccess(false);
-          toast.error(res.message, {
+          toast.error(res?.message, {
             position: toast.POSITION.TOP_RIGHT,
           });
         }

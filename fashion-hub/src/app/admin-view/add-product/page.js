@@ -130,7 +130,7 @@ const AdminAddNewProduct = () => {
 
     if (res.success) {
       setComponentLevelLoader({ loading: false, id: "" });
-      toast.success(res.message, {
+      toast.success(res?.message, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
       setFormData(initialFormData);
@@ -141,7 +141,7 @@ const AdminAddNewProduct = () => {
         router.push("/admin-view/all-products");
       }, 1000);
     } else {
-      toast.error(res.message, {
+      toast.error(res?.message, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
       setComponentLevelLoader({ loading: false, id: "" });

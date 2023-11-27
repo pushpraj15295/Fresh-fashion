@@ -27,12 +27,12 @@ export default function Orders() {
       setPageLevelLoader(false);
 
       setAllOrdersForUser(res.data);
-      toast.success(res.message, {
+      toast.success(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
     } else {
       setPageLevelLoader(false);
-      toast.error(res.message, {
+      toast.error(res?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
     }

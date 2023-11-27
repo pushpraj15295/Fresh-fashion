@@ -48,7 +48,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200 pl-10 pr-10">
+      <nav className="bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200 pl-14 pr-20">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto pb-2 pt-1">
           <div className="flex item-center cursor-pointer">
             <img

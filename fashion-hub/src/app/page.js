@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { getAllAdminProducts } from "@/services/product";
 
 export default function Home() {
-
   const router = useRouter();
   const [products, setProducts] = useState([]);
 
@@ -23,14 +22,17 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <section className="">
-        <div className="grid max-w-screen-xl px-4 py-8 mx-suto  lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+        <div className="grid max-w-screen-xl px-4 py-8 mx-suto  lg:gap-8 xl:gap-4 lg:py-16 lg:grid-cols-12">
           <div className="mr-auto place-self-center lg:col-span-7">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
               Best Fashion Collection
             </h1>
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">
-              Quisquemos sodales suscipit tortor ditaemcos condimentum de cosmo
-              lacus meleifend menean diverra loremous.
+              Welcome to Fashion Hub, your premier online destination for the
+              latest trends in clothing and accessories. Explore our curated
+              collection of stylish fashion essentials, from chic apparel to
+              must-have accessories. Elevate your wardrobe and stay on-trend
+              with Fashion Hub – where style meets convenience.
             </p>
 
             <button
@@ -41,9 +43,10 @@ export default function Home() {
               Explore Shop Collection
             </button>
           </div>
-          <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
+          <div className="hidden lg:mt-0 lg:col-span-5 lg:flex rounded-sm" >
             <img
-              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+              className="rounded-sm"
+              src="https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Explore Shop Collection"
             />
           </div>
@@ -55,11 +58,11 @@ export default function Home() {
                 <div>
                   <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
                     Summer Sale Collection
-                  </h2>
+                  </h2>&nbsp;
                 </div>
                 <button
                   onClick={() => router.push("/product/listing/all-products")}
-                  className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
+                  className="mt-2.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
                 >
                   Shop ALL
                 </button>
@@ -86,12 +89,12 @@ export default function Home() {
                               className="object-cover w-full rounded aspect-square"
                             />
                           </div>
-                          <div className="mt-3">
+                          <div className="mt-3 ml-2">
                             <h3 className="font-medium text-gray-900">
                               {productItem.name}
                             </h3>
                             <p className="mt-1 text-sm text-gray-800">
-                              ${productItem.price}{" "}
+                              ${productItem.price} &nbsp; &nbsp;
                               <span className="text-red-700">{`(-${productItem.priceDrop}%) Off`}</span>
                             </p>
                           </div>
@@ -112,7 +115,7 @@ export default function Home() {
             <li>
               <div className="relative block group">
                 <img
-                  src="https://images.unsplash.com/photo-1618898909019-010e4e234c55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                  src="https://media.istockphoto.com/id/931577634/photo/soft-focus-of-a-two-years-old-child-choosing-her-own-dresses-from-kids-cloth-rack.jpg?s=1024x1024&w=is&k=20&c=SyjUcD-c5EG5ZzBF1XWxcJUMCwXIORq6mTzHCMPODuk="
                   className="object-cover w-full aspect-square"
                 />
                 <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
