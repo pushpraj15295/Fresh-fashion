@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 
 export default function ProductTile({ item }) {
   const router = useRouter();
-  
+
   return (
-    <div  onClick={()=> router.push(`/product/${item._id}`)}>
-      <div className="overflow-hideen aspect-w-1 aspect-h-1 h-52">
+    <div onClick={() => router.push(`/product/${item._id}`)}>
+      <div className="overflow-hideen aspect-w-1 aspect-h-1 h-60">
         <img
           src={item.imageUrl}
           alt="Product image"
@@ -20,7 +20,13 @@ export default function ProductTile({ item }) {
             Sale
           </p>
         </div>
-      ) : null}
+      ) : (
+        <div className="absolute top-0 m-2 rounded-full bg-black">
+          <p className="rounded-full  p-1 text-[8px] font-bold uppercase tracking-wide text-rose-600 sm:py-1 sm:px-3">
+            Out of Stock
+          </p>
+        </div>
+      )}
       <div className="my-4 mx-auto flex w-10/12 flex-col items-start justify-between">
         <div className="mb-2 flex">
           <p

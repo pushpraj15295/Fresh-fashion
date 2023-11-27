@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import ComponentLevelLoader from "../Loader/componentlevel";
+import { PulseLoader } from "react-spinners";
 
 export default function CommonCart({
   cartItems = [],

@@ -43,6 +43,7 @@ const Navbar = () => {
       currentUpdatedProduct !== null
     )
       setCurrentUpdatedProduct(null);
+      setShowCartModal(false);
   }, [pathName]);
 
   return (
@@ -69,7 +70,7 @@ const Navbar = () => {
                 </button>
                 <button
                   className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white rounded-sm"
-                  onClick={() => setShowCartModal(true)}
+                  onClick={() => setShowCartModal(!showCartModal)}
                 >
                   Cart
                 </button>
