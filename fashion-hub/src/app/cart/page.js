@@ -10,12 +10,12 @@ import { toast } from "react-toastify";
 export default function Cart() {
   const {
     user,
-    setCartItems,
     cartItems,
+    setCartItems,
     pageLevelLoader,
     setPageLevelLoader,
-    setComponentLevelLoader,
     componentLevelLoader,
+    setComponentLevelLoader,
   } = useContext(GlobalContext);
 
   async function extractAllCartItems() {

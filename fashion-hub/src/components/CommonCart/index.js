@@ -12,7 +12,7 @@ export default function CommonCart({
   const router = useRouter();
 
   return (
-    <section className="h-screen bg-gray-100">
+    <section className="h-screen bg-gray-100 mt-20" >
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mt-8 max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="bg-white shadow">
