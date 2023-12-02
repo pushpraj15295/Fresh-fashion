@@ -3,9 +3,16 @@ import Product from "@/models/product";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
+import Cors from 'micro-cors';
+
+const cors = Cors({
+  allowedMethods: ['GET'], // You can adjust the allowed methods as needed
+});
 
 export async function GET(req) {
+  
   try {
+
     await connectToDB();
 
     const extractAllproducts = await Product.find({});
