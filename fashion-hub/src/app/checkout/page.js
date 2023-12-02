@@ -29,7 +29,7 @@ export default function Checkout() {
   const params = useSearchParams();
 
   const publishableKey =
-    "pk_test_51NMv6ZSC6E6fnyMeRIEb9oEXdGRCC9yrBTT4xWHgcjWOuFcqFiAHErvaS50K1hl5t5WJXVGfLLWxvb705IWJhA3300yCcrMnlM";
+    "pk_test_51OIxJmSA5GXs8GoClmK4j5pG1ylzfEOankf4HwqqLBGYPjF0U6KSgLRsy3yL6GNzQz31kFOxQzPK4MeqCj0n0z4N00KWlO5C8t";
   const stripePromise = loadStripe(publishableKey);
 
   console.log(cartItems);
@@ -164,7 +164,7 @@ export default function Checkout() {
 
   if (orderSuccess) {
     return (
-      <section className="h-screen bg-gray-200">
+      <section className="h-screen bg-gray-200 lg:mt-20">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mt-8 max-w-screen-xl px-4 sm:px-6 lg:px-8 ">
             <div className="bg-white shadow">
@@ -196,7 +196,7 @@ export default function Checkout() {
 
   return (
     <div>
-      <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+      <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32 mt-20">
         <div className="px-4 pt-8">
           <p className="font-medium text-xl">Cart Summary</p>
           <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-5">
@@ -226,7 +226,7 @@ export default function Checkout() {
             )}
           </div>
         </div>
-        <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+        <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-24 rounded-md">
           <p className="text-xl font-medium">Shipping address details</p>
           <p className="text-gray-400 font-bold">
             Complete your order by selecting address below
@@ -278,7 +278,7 @@ export default function Checkout() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium text-gray-900">Shipping</p>
-              <p className="text-lg font-bold text-gray-900">Free</p>
+              <p className="text-lg font-bold text-green-600">Free</p>
             </div>
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium text-gray-900">Total</p>

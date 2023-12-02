@@ -21,12 +21,12 @@ export default function Account() {
     user,
     addresses,
     setAddresses,
+    pageLevelLoader,
     addressFormData,
     setAddressFormData,
+    setPageLevelLoader,
     componentLevelLoader,
     setComponentLevelLoader,
-    pageLevelLoader,
-    setPageLevelLoader,
   } = useContext(GlobalContext);
 
   const [showAddressForm, setShowAddressForm] = useState(false);
@@ -55,10 +55,10 @@ export default function Account() {
 
     console.log(res);
 
-    if (res?.success) {
+    if (res.success) {
       setComponentLevelLoader({ loading: false, id: "" });
       toast.success(res?.message, {
-        position: toast.POSITION.TOP_RIGHT,
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
       setAddressFormData({
         fullName: "",
@@ -72,14 +72,7 @@ export default function Account() {
     } else {
       setComponentLevelLoader({ loading: false, id: "" });
       toast.error(res?.message, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-      setAddressFormData({
-        fullName: "",
-        city: "",
-        country: "",
-        postalCode: "",
-        address: "",
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
     }
   }
@@ -101,18 +94,18 @@ export default function Account() {
 
     const res = await deleteAddress(getCurrentAddressID);
 
-    if (res?.success) {
+    if (res.success) {
       setComponentLevelLoader({ loading: false, id: "" });
 
       toast.success(res?.message, {
-        position: toast.POSITION.TOP_RIGHT,
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
       extractAllAddresses();
     } else {
       setComponentLevelLoader({ loading: false, id: "" });
 
       toast.error(res?.message, {
-        position: toast.POSITION.TOP_RIGHT,
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
     }
   }
@@ -123,7 +116,7 @@ export default function Account() {
 
   return (
     <section>
-      <div className="mx-auto bg-gray-100 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto bg-gray-100 px-4 sm:px-6 lg:px-8 mt-20">
         <div className="bg-white shadow">
           <div className="p-6 sm:p-12">
             <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
@@ -134,7 +127,7 @@ export default function Account() {
                 {user?.name}
               </h4>
               <p>{user?.email}</p>
-              <p>{user?.role}</p>
+              <p className="text-black-900 text-lg">{user?.role}</p>
             </div>
             <button
               onClick={() => router.push("/orders")}

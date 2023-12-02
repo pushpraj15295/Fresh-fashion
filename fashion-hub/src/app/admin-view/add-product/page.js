@@ -153,7 +153,7 @@ const AdminAddNewProduct = () => {
   }, [currentUpdatedProduct]);
 
   return (
-    <div className="w-full mt-5 mr-0 ml-0 mb-0 relative">
+    <div className="w-full mt-5 mr-0 ml-0 mb-0 relative lg:mt-24">
       <div className="mt-5 lg:ml-40 lg:mr-40 lg:mb-10 lg:pl-40 lg:pr-40 sm:ml-5 sm:mr-5 sm:pl-2 sm:pr-2 flex flex-col items-start justify-start p-10 bg-white shadow-2xl rounded-xl relative">
         <div className="w-full mt-6 mr-0 ml-0 mb-0 space-y-8">
           <UploadImageComponent
