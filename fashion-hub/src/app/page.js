@@ -8,6 +8,10 @@ export default function Home() {
   const router = useRouter();
   const [products, setProducts] = useState([]);
 
+
+
+  // console.log("env", process.env.NEXT_APP_LOCAL_BASE_URL)
+
   async function getListOfProducts() {
     const res = await getAllAdminProducts();
     if (res.success) {
