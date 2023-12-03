@@ -9,7 +9,7 @@ module.exports = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://fresh-fashion-637zwcjj4-pushpraj15295.vercel.app/",
+            value: "*",
           },
           {
             key: "Access-Control-Allow-Methods",
