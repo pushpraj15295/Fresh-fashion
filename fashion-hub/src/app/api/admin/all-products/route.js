@@ -12,6 +12,7 @@ export const dynamic = "force-dynamic";
 export async function GET(req) {
   
   try {
+    console.log(req, "request")
 
     await connectToDB();
 
