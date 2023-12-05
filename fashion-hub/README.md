@@ -14,7 +14,7 @@ pnpm dev
 bun dev
 ```
 
-Open [https://fresh-fashion-637zwcjj4-pushpraj15295.vercel.app/](https://fresh-fashion-637zwcjj4-pushpraj15295.vercel.app/) with your browser to see the result.
+
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 

@@ -10,7 +10,6 @@ export default function Home() {
 
 
 
-  // console.log("env", process.env.NEXT_APP_LOCAL_BASE_URL)
 
   async function getListOfProducts() {
     const res = await getAllAdminProducts();

@@ -57,6 +57,7 @@ export const updateAProduct = async (formData) => {
 };
 
 export const deleteAProduct = async (id) => {
+  console.log("jfien")
   try {
     const res = await fetch(`/api/admin/delete-product?id=${id}`, {
       method: "DELETE",
