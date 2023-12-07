@@ -22,7 +22,6 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { toast } from "react-toastify";
-import { resolve } from "styled-jsx/css";
 import { useRouter } from "next/navigation";
 import { useContext, useRef, useState, useEffect } from "react";
 // Initialize Firebase
