@@ -1,10 +1,15 @@
+'use client'
 import CommonDetails from "@/components/CommonDetails";
 import { productById } from "@/services/product";
 
 export default async function ProductDetails({ params }) {
   const productDetailsData = await productById(params.details);
 
-  console.log(productDetailsData, "sangam");
+  console.log(productDetailsData, "data");
 
-  return <CommonDetails item={productDetailsData && productDetailsData.data} />;
+  return productDetailsData ? (
+    <CommonDetails item={productDetailsData.data} />
+  ) : (
+    <> productDetailsData not found </>
+  );
 }

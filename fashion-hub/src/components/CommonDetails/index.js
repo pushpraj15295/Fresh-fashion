@@ -43,11 +43,13 @@ export default function CommonDetails({ item }) {
             <div className="lg:flex lg:items-start">
               <div className="lg:order-2 lg:ml-5">
                 <div className="max-w-xl overflow-hidden rounded-lg">
-                  <img
-                    src={item.imageUrl}
-                    className="h-full w-full max-w-full object-cover"
-                    alt="Product Details"
-                  />
+                  {item?.imageUrl && (
+                    <img
+                      src={item.imageUrl}
+                      className="h-full w-full max-w-full object-cover"
+                      alt="Product Details"
+                    />
+                  )}
                 </div>
               </div>
               <div className="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
@@ -56,21 +58,25 @@ export default function CommonDetails({ item }) {
                     type="button"
                     className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-100 text-center"
                   >
-                    <img
-                      src={item.imageUrl}
-                      className="h-full w-full object-cover"
-                      alt="Product Details"
-                    />
+                    {item?.imageUrl && (
+                      <img
+                        src={item.imageUrl}
+                        className="h-full w-full object-cover"
+                        alt="Product Details"
+                      />
+                    )}
                   </button>
                   <button
                     type="button"
                     className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-100 text-center"
                   >
-                    <img
-                      src={item.imageUrl}
-                      className="h-full w-full object-cover"
-                      alt="Product Details"
-                    />
+                    {item?.imageUrl && (
+                      <img
+                        src={item.imageUrl}
+                        className="h-full w-full object-cover"
+                        alt="Product Details"
+                      />
+                    )}
                   </button>
                 </div>
               </div>
@@ -140,7 +146,7 @@ export default function CommonDetails({ item }) {
           </div>
         </div>
       </div>
-      <Notification/>
+      <Notification />
     </section>
   );
 }
