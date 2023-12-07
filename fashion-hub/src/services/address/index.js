@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 
 export const addNewAddress = async (formData) => {
   try {
-    const res = await fetch("http://localhost:3000/api/address/add-new-address", {
+    const res = await fetch("/api/address/add-new-address", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +21,7 @@ export const addNewAddress = async (formData) => {
 
 export const fetchAllAddresses = async (id) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/address/get-all-address?id=${id}`, {
+    const res = await fetch(`/api/address/get-all-address?id=${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,
@@ -38,7 +38,7 @@ export const fetchAllAddresses = async (id) => {
 
 export const updateAddress = async (formData) => {
   try {
-    const res = await fetch("http://localhost:3000/api/address/update-address", {
+    const res = await fetch("/api/address/update-address", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export const updateAddress = async (formData) => {
 
 export const deleteAddress = async (id) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/address/delete-address?id=${id}`, {
+    const res = await fetch(`/api/address/delete-address?id=${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,
