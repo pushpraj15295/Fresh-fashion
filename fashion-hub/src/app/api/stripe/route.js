@@ -17,8 +17,8 @@ export async function POST(req) {
         payment_method_types: ["card"],
         line_items: res,
         mode: "payment",
-        success_url: "api/checkout" + "?status=success",
-        cancel_url: "api/checkout" + "?status=cancel",
+        success_url: "/api/checkout" + "?status=success",
+        cancel_url: "/api/checkout" + "?status=cancel",
       });
 
       return NextResponse.json({

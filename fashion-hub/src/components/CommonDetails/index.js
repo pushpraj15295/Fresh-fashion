@@ -20,14 +20,14 @@ export default function CommonDetails({ item }) {
 
     const res = await addToCart({ productID: getItem._id, userID: user._id });
 
-    if (res?.success) {
-      toast.success(res?.message, {
+    if (res.success) {
+      toast.success(res.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setComponentLevelLoader({ loading: false, id: "" });
       setShowCartModal(true);
     } else {
-      toast.error(res?.message, {
+      toast.error(res.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setComponentLevelLoader({ loading: false, id: "" });
@@ -36,7 +36,7 @@ export default function CommonDetails({ item }) {
   }
 
   return (
-    <section className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 mt-16">
+    <section className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto px-4">
         <div className="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
           <div className="lg:col-span-3 lg:row-end-1">
@@ -140,7 +140,7 @@ export default function CommonDetails({ item }) {
           </div>
         </div>
       </div>
-      <Notification />
+      <Notification/>
     </section>
   );
 }

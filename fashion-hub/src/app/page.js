@@ -3,13 +3,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getAllAdminProducts } from "@/services/product";
+import SliderComponent from "@/components/Slider";
 
 export default function Home() {
   const router = useRouter();
   const [products, setProducts] = useState([]);
-
-
-
 
   async function getListOfProducts() {
     const res = await getAllAdminProducts();
@@ -46,7 +44,7 @@ export default function Home() {
               Explore Shop Collection
             </button>
           </div>
-          <div className="hidden lg:mt-0 lg:col-span-5 lg:flex rounded-sm" >
+          <div className="hidden lg:mt-0 lg:col-span-5 lg:flex rounded-sm">
             <img
               className="rounded-sm"
               src="https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -54,6 +52,11 @@ export default function Home() {
             />
           </div>
         </div>
+
+        <div>
+          <SliderComponent />
+        </div>
+
         <div className="max-w-screen-xl px-4 py-8 mx-auto sm:py-12 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:items-stretch">
             <div className="grid p-6 bg-gray-100 rounded place-content-center sm:p-8">
@@ -61,7 +64,8 @@ export default function Home() {
                 <div>
                   <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
                     Summer Sale Collection
-                  </h2>&nbsp;
+                  </h2>
+                  &nbsp;
                 </div>
                 <button
                   onClick={() => router.push("/product/listing/all-products")}
@@ -87,7 +91,7 @@ export default function Home() {
                         >
                           <div>
                             <img
-                              src={productItem.imageUrl}
+                              src={productItem?.imageUrl}
                               alt="Sale Product Item"
                               className="object-cover w-full rounded aspect-square"
                             />

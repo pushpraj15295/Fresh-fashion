@@ -9,8 +9,9 @@ export const login = async (formData) => {
     });
 
     const data = await response.json();
+
     return data;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 };
