@@ -23,7 +23,6 @@ export async function GET(req) {
         });
       }
   } catch (error) {
-    console.log(error);
     return NextResponse.json({
       success: false,
       message: "Something went wrong ! Please try again later",

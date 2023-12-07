@@ -40,7 +40,6 @@ export async function DELETE(req) {
       });
     }
   } catch (e) {
-    console.log(error);
     return NextResponse.json({
       success: false,
       message: "Something went wrong ! Please try again later",

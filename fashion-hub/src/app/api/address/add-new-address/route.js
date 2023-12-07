@@ -62,7 +62,6 @@ export async function POST(req) {
       });
     }
   } catch (e) {
-    console.log(e);
     return NextResponse.json({
       success: false,
       message: "Something went wrong ! Please try again later",

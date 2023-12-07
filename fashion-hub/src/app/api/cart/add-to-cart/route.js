@@ -29,7 +29,6 @@ export async function POST(req) {
         });
       }
 
-      console.log(productID, userID);
 
       const isCurrentCartItemAlreadyExists = await Cart.find({
         productID: productID,

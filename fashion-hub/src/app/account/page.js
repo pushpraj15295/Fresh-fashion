@@ -53,7 +53,6 @@ export default function Account() {
           })
         : await addNewAddress({ ...addressFormData, userID: user?._id });
 
-    console.log(res);
 
     if (res.success) {
       setComponentLevelLoader({ loading: false, id: "" });

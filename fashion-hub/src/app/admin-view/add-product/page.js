@@ -125,7 +125,6 @@ const AdminAddNewProduct = () => {
         ? await updateAProduct(formData)
         : await addNewProduct(formData);
 
-    console.log(res);
 
     if (res.success) {
       setComponentLevelLoader({ loading: false, id: "" });
