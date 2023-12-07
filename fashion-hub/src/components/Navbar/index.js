@@ -43,7 +43,7 @@ const Navbar = () => {
       currentUpdatedProduct !== null
     )
       setCurrentUpdatedProduct(null);
-      setShowCartModal(false);
+    setShowCartModal(false);
   }, [pathName]);
 
   return (
