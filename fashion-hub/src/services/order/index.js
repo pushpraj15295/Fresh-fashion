@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 
 export const createNewOrder = async (formData) => {
   try {
-    const res = await fetch("http://localhost:3000/api/order/create-order", {
+    const res = await fetch("/api/order/create-order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -156,11 +156,13 @@ export default function Checkout() {
   useEffect(() => {
     if (orderSuccess) {
       setTimeout(() => {
-        setOrderSuccess(false);
+        // setOrderSuccess(false);
         router.push("/orders");
       }, [2000]);
     }
   }, [orderSuccess]);
+  
+  console.log("orderSuccess",orderSuccess)
 
   if (orderSuccess) {
     return (
