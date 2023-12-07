@@ -26,8 +26,6 @@ export default function Register() {
 
   const router = useRouter();
 
-  console.log(formData);
-
   function isFormValid() {
     return formData &&
       formData.name &&
@@ -40,8 +38,6 @@ export default function Register() {
       : false;
   }
 
-  console.log(isFormValid());
-
   async function handleRegisterOnSubmit() {
     setPageLevelLoader(true);
     const data = await registerNewUser(formData);
@@ -51,14 +47,14 @@ export default function Register() {
         position: toast.POSITION.TOP_RIGHT,
       });
       setIsRegistered(true);
-      setPageLevelLoader(false);
       setFormData(initialFormData);
+      setPageLevelLoader(false);
     } else {
       toast.error(data.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
-      setPageLevelLoader(false);
       setFormData(initialFormData);
+      setPageLevelLoader(false);
     }
 
     console.log(data);
@@ -69,7 +65,7 @@ export default function Register() {
   }, [isAuthUser]);
 
   return (
-    <div className="bg-white relative">
+    <div className="bg-white relative mt-14">
       <div className="flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-8 mr-auto xl:px-5 lg:flex-row">
         <div className="flex flex-col justify-center items-center w-full pr-10 pl-10 lg:flex-row">
           <div className="w-full mt-10 mr-0 mb-0 ml-0 relative max-w-2xl lg:mt-0 lg:w-5/12">

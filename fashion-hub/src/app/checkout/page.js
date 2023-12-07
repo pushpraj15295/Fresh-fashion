@@ -37,7 +37,7 @@ export default function Checkout() {
   async function getAllAddresses() {
     const res = await fetchAllAddresses(user?._id);
 
-    if (res?.success) {
+    if (res.success) {
       setAddresses(res.data);
     }
   }
@@ -83,13 +83,13 @@ export default function Checkout() {
         if (res.success) {
           setIsOrderProcessing(false);
           setOrderSuccess(true);
-          toast.success(res?.message, {
+          toast.success(res.message, {
             position: toast.POSITION.TOP_RIGHT,
           });
         } else {
           setIsOrderProcessing(false);
           setOrderSuccess(false);
-          toast.error(res?.message, {
+          toast.error(res.message, {
             position: toast.POSITION.TOP_RIGHT,
           });
         }
@@ -226,7 +226,7 @@ export default function Checkout() {
             )}
           </div>
         </div>
-        <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-24 rounded-md">
+        <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-24">
           <p className="text-xl font-medium">Shipping address details</p>
           <p className="text-gray-400 font-bold">
             Complete your order by selecting address below
@@ -278,7 +278,7 @@ export default function Checkout() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium text-gray-900">Shipping</p>
-              <p className="text-lg font-bold text-green-600">Free</p>
+              <p className="text-lg font-bold text-gray-900">Free</p>
             </div>
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium text-gray-900">Total</p>

@@ -116,11 +116,11 @@ export default function Account() {
 
   return (
     <section>
-      <div className="mx-auto bg-gray-100 px-4 sm:px-6 lg:px-8 mt-20">
+      <div className="mx-auto bg-gray-100 px-4 sm:px-6 lg:px-8  mt-20">
         <div className="bg-white shadow">
           <div className="p-6 sm:p-12">
             <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-              {/* we have render random user image here */}
+            {/* profile img */}
             </div>
             <div className="flex flex-col flex-1">
               <h4 className="text-lg font-semibold text-center md:text-left">

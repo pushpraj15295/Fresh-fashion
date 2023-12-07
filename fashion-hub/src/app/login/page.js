@@ -29,8 +29,6 @@ export default function Login() {
 
   const router = useRouter();
 
-  console.log(formData);
-
   function isValidForm() {
     return formData &&
       formData.email &&
@@ -43,9 +41,7 @@ export default function Login() {
 
   async function handleLogin() {
     setComponentLevelLoader({ loading: true, id: "" });
-    const res = await login(formData);
-
-    console.log(res);
+    const res = await login(formData)
 
     if (res.success) {
       toast.success(res?.message, {
@@ -66,14 +62,12 @@ export default function Login() {
     }
   }
 
-  console.log(isAuthUser, user);
-
   useEffect(() => {
     if (isAuthUser) router.push("/");
   }, [isAuthUser]);
 
   return (
-    <div className="bg-white relative">
+    <div className="bg-white relative mt-14">
       <div className="flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-8 mr-auto xl:px-5 lg:flex-row">
         <div className="flex flex-col justify-center items-center w-full pr-10 pl-10 lg:flex-row">
           <div className="w-full mt-10 mr-0 mb-0 ml-0 relative max-w-2xl lg:mt-0 lg:w-5/12">
